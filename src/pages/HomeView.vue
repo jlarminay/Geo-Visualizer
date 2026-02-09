@@ -15,6 +15,12 @@ async function importFile(e: any) {
   }
   e.target.value = null;
 }
+async function importDemoData() {
+  const results = await memoryStore.demoData();
+  if (results) {
+    router.push("/map");
+  }
+}
 </script>
 
 <template>
@@ -59,6 +65,8 @@ async function importFile(e: any) {
       class="absolute bottom-0 z-10 w-full p-2 flex items-center justify-center gap-2"
       v-auto-animate
     >
+      <p class="link mb-0 pb-0" @click="importDemoData">Demo Data</p>
+      |
       <a
         href="https://github.com/jlarminay/Geo-Visualizer"
         target="_blank"

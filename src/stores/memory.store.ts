@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { toaster, parseCoord } from "@/helpers";
 import dayjs from "dayjs";
 import { type MapPoint } from "@/types";
+import demoData from "@/demo";
 
 // import { Capacitor } from "@capacitor/core";
 // import { Filesystem, Directory, Encoding } from "@capacitor/filesystem";
@@ -17,6 +18,16 @@ export const useMemoryStore = defineStore("memory", {
   getters: {},
 
   actions: {
+    async demoData(): Promise<boolean> {
+      try {
+        this.entries = demoData;
+        toaster("success", `Imported demo entries.`);
+        return true;
+      } catch (err: any) {
+        toaster("error", err?.message || String(err));
+        return false;
+      }
+    },
     async import(file: File): Promise<boolean> {
       try {
         const text = await file.text();
