@@ -1,0 +1,51 @@
+{
+  "name": "geo-visualizer",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "npm run build:vue && npm run build:assets && npm run build:android",
+    "build:vue": "vue-tsc -b && vite build",
+    "build:assets": "npx capacitor-assets generate",
+    "build:android": "npx cap sync && cd android && ./gradlew assembleDebug",
+    "send-to-android": "adb install -r android/app/build/outputs/apk/debug/app-debug.apk",
+    "build-and-send": "npm run build && npm run send-to-android",
+    "build:prod": "node build-android.js",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/filesystem": "^8.0.0",
+    "@capacitor/status-bar": "^8.0.0",
+    "@formkit/auto-animate": "^0.9.0",
+    "@meforma/vue-toaster": "^1.3.0",
+    "@quasar/extras": "^1.17.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "chart.js": "^4.5.1",
+    "dayjs": "^1.11.19",
+    "leaflet": "^1.9.4",
+    "pinia": "^3.0.4",
+    "quasar": "^2.18.6",
+    "shelljs": "^0.10.0",
+    "tailwindcss": "^4.1.18",
+    "vue": "^3.5.24",
+    "vue-chartjs": "^5.3.3",
+    "vue-router": "^4.6.4"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.0.0",
+    "@quasar/vite-plugin": "^1.10.0",
+    "@types/leaflet": "^1.9.21",
+    "@types/node": "^24.10.1",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vue/tsconfig": "^0.8.1",
+    "prettier": "^3.7.4",
+    "sass-embedded": "^1.97.1",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.4",
+    "vue-tsc": "^3.1.4"
+  }
+}

@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+.link {
+  @apply text-blue-600 underline hover:text-blue-400 transition;
+}
+
+/* Overrides for Quasar */
+.q-date__view {
+  padding: 0 !important;
+}
+
+/* Overrides for toaster */
+.c-toast-container {
+  @apply top-4;
+
+  .c-toast {
+    @apply w-[90%] text-center rounded mb-0;
+
+    p {
+      @apply m-0 text-base;
+    }
+    span {
+      @apply text-sm;
+    }
+  }
+}
