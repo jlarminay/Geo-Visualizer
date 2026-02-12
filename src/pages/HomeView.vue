@@ -45,7 +45,6 @@ async function importDemoData() {
         ref="fileInput"
         type="file"
         accept="text/csv,text/plain,.csv"
-        class="hidden"
         @change="importFile"
       />
 
